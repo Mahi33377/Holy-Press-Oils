@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PurePress Oils – Cold Pressed. Naturally Pure.</title>
+  <meta name="description" content="Cold pressed sesame oil and groundnut oil, made the traditional way. No heat, no chemicals — just pure, natural oil."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --amber:    #C8820A;
+      --amber-lt: #F2C75C;
+      --cream:    #FDF8F0;
+      --brown:    #3B2A14;
+      --brown-md: #6B4C20;
+      --green:    #4A7C59;
+      --white:    #FFFFFF;
+      --gray:     #F5F2ED;
+      --text:     #2C1F0E;
+      --muted:    #7A6A55;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(253,248,240,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(200,130,10,0.15);
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; font-weight: 900;
+      color: var(--amber);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+    .logo span { color: var(--brown); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none; font-size: 0.9rem; font-weight: 500;
+      color: var(--brown-md); transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--amber); }
+    .nav-cart {
+      background: var(--amber); color: var(--white);
+      border: none; padding: 0.5rem 1.2rem; border-radius: 50px;
+      font-size: 0.85rem; font-weight: 600; cursor: pointer;
+      transition: background 0.2s;
+    }
+    .nav-cart:hover { background: var(--brown); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; text-align: center;
+      padding: 6rem 2rem 4rem;
+      background:
+        radial-gradient(ellipse 60% 50% at 70% 50%, rgba(200,130,10,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 20% 60%, rgba(74,124,89,0.08) 0%, transparent 60%),
+        var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -100px; right: -100px;
+      width: 500px; height: 500px; border-radius: 50%;
+      background: rgba(200,130,10,0.06);
+      animation: float 8s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(-20px) scale(1.05); }
+    }
+    .hero-eyebrow {
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--green);
+      margin-bottom: 1.2rem;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      font-weight: 900; line-height: 1.1;
+      color: var(--brown);
+      max-width: 720px; margin: 0 auto 1.5rem;
+    }
+    .hero h1 em {
+      font-style: normal; color: var(--amber);
+      position: relative;
+    }
+    .hero h1 em::after {
+      content: '';
+      position: absolute; bottom: -4px; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--amber-lt), var(--amber));
+      border-radius: 2px;
+    }
+    .hero p {
+      font-size: 1.15rem; color: var(--muted);
+      max-width: 480px; margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+    .hero-cta {
+      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--amber); color: var(--white);
+      border: none; padding: 0.85rem 2rem;
+      border-radius: 50px; font-size: 1rem; font-weight: 600;
+      cursor: pointer; text-decoration: none;
+      transition: all 0.2s; display: inline-block;
+      box-shadow: 0 4px 20px rgba(200,130,10,0.35);
+    }
+    .btn-primary:hover {
+      background: var(--brown);
+      box-shadow: 0 6px 28px rgba(59,42,20,0.3);
+      transform: translateY(-1px);
+    }
+    .btn-secondary {
+      background: transparent; color: var(--brown);
+      border: 2px solid var(--brown-md); padding: 0.85rem 2rem;
+      border-radius: 50px; font-size: 1rem; font-weight: 600;
+      cursor: pointer; text-decoration: none;
+      transition: all 0.2s; display: inline-block;
+    }
+    .btn-secondary:hover { border-color: var(--amber); color: var(--amber); }
+
+    .trust-bar {
+      margin-top: 4rem;
+      display: flex; gap: 2.5rem; justify-content: center; flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-size: 0.85rem; color: var(--muted);
+    }
+    .trust-icon { font-size: 1.1rem; }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 5rem 2rem; }
+    .section-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--green);
+      margin-bottom: 0.8rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700; color: var(--brown);
+      line-height: 1.25;
+    }
+
+    /* ── PRODUCTS ── */
+    #products { background: var(--white); }
+    .products-header { text-align: center; margin-bottom: 3rem; }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem; max-width: 900px; margin: 0 auto;
+    }
+    .product-card {
+      background: var(--cream);
+      border-radius: 20px; overflow: hidden;
+      border: 1px solid rgba(200,130,10,0.1);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 40px rgba(59,42,20,0.12);
+    }
+    .product-visual {
+      height: 200px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 5rem;
+      position: relative; overflow: hidden;
+    }
+    .product-visual.sesame { background: linear-gradient(135deg, #F5E6C8, #E8CC88); }
+    .product-visual.ground  { background: linear-gradient(135deg, #E8D5B0, #D4B070); }
+    .product-visual.future  { background: linear-gradient(135deg, #E8F0E4, #C8DEC0); }
+    .badge {
+      position: absolute; top: 12px; right: 12px;
+      background: var(--green); color: var(--white);
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.05em;
+      text-transform: uppercase; padding: 0.3rem 0.7rem;
+      border-radius: 50px;
+    }
+    .badge.new { background: var(--amber); }
+    .product-info { padding: 1.5rem; }
+    .product-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem; font-weight: 700;
+      color: var(--brown); margin-bottom: 0.4rem;
+    }
+    .product-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.6; margin-bottom: 1rem; }
+    .product-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: 1rem;
+    }
+    .price { font-size: 1.2rem; font-weight: 700; color: var(--amber); }
+    .price span { font-size: 0.75rem; font-weight: 400; color: var(--muted); }
+    .add-btn {
+      background: var(--brown); color: var(--white);
+      border: none; padding: 0.55rem 1.2rem;
+      border-radius: 50px; font-size: 0.85rem; font-weight: 600;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .add-btn:hover { background: var(--amber); }
+    .add-btn:disabled {
+      background: #ccc; cursor: not-allowed;
+    }
+
+    /* ── WHY US ── */
+    #why { background: var(--gray); }
+    .why-inner {
+      max-width: 900px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 3rem; align-items: center;
+    }
+    .why-points { margin-top: 2rem; display: flex; flex-direction: column; gap: 1.5rem; }
+    .why-point { display: flex; gap: 1rem; align-items: flex-start; }
+    .why-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: var(--amber); color: var(--white);
+      font-size: 1.2rem;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .why-text h4 { font-size: 0.95rem; font-weight: 600; color: var(--brown); margin-bottom: 0.2rem; }
+    .why-text p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+    .why-visual {
+      background: linear-gradient(135deg, #F5E6C8, #E8CC88);
+      border-radius: 24px; height: 360px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 7rem;
+    }
+
+    /* ── PROCESS ── */
+    #process { background: var(--white); }
+    .process-header { text-align: center; margin-bottom: 3rem; }
+    .process-steps {
+      max-width: 800px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem; text-align: center;
+    }
+    .step { position: relative; }
+    .step-number {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--amber); color: var(--white);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem; font-weight: 900;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1rem;
+    }
+    .step-title { font-size: 0.9rem; font-weight: 600; color: var(--brown); margin-bottom: 0.4rem; }
+    .step-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+    .step-connector {
+      position: absolute; top: 28px; left: calc(50% + 28px);
+      width: calc(100% - 28px); height: 2px;
+      background: linear-gradient(90deg, var(--amber-lt), transparent);
+    }
+    .step:last-child .step-connector { display: none; }
+
+    /* ── CONTACT / ORDER ── */
+    #order { background: var(--cream); }
+    .order-inner {
+      max-width: 700px; margin: 0 auto; text-align: center;
+    }
+    .order-inner .section-title { margin-bottom: 0.8rem; }
+    .order-inner p { color: var(--muted); margin-bottom: 2rem; }
+    .contact-options {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem; margin-top: 2rem; text-align: left;
+    }
+    .contact-card {
+      background: var(--white);
+      border-radius: 16px; padding: 1.5rem;
+      border: 1px solid rgba(200,130,10,0.15);
+    }
+    .contact-card-icon { font-size: 1.8rem; margin-bottom: 0.7rem; }
+    .contact-card h4 { font-size: 0.9rem; font-weight: 600; color: var(--brown); margin-bottom: 0.3rem; }
+    .contact-card p { font-size: 0.82rem; color: var(--muted); }
+    .contact-card a { color: var(--amber); text-decoration: none; font-weight: 600; }
+
+    /* ORDER FORM */
+    .order-form {
+      background: var(--white);
+      border-radius: 20px; padding: 2rem;
+      border: 1px solid rgba(200,130,10,0.15);
+      text-align: left; margin-top: 2rem;
+    }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group label { font-size: 0.82rem; font-weight: 600; color: var(--brown); }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      border: 1.5px solid rgba(200,130,10,0.2);
+      border-radius: 10px; padding: 0.65rem 0.9rem;
+      font-size: 0.9rem; font-family: 'Inter', sans-serif;
+      background: var(--cream); color: var(--text);
+      outline: none; transition: border-color 0.2s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--amber); }
+    .form-group textarea { resize: vertical; min-height: 90px; }
+    .form-submit {
+      margin-top: 1.2rem;
+      background: var(--amber); color: var(--white);
+      border: none; padding: 0.85rem 2rem;
+      border-radius: 50px; font-size: 1rem; font-weight: 600;
+      cursor: pointer; width: 100%;
+      transition: background 0.2s;
+    }
+    .form-submit:hover { background: var(--brown); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--brown);
+      color: rgba(255,255,255,0.75);
+      text-align: center; padding: 2rem;
+    }
+    footer .logo { font-size: 1.2rem; display: block; margin-bottom: 0.5rem; }
+    footer p { font-size: 0.82rem; }
+
+    /* ── TOAST ── */
+    #toast {
+      position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(100px);
+      background: var(--brown); color: var(--white);
+      padding: 0.8rem 1.8rem; border-radius: 50px;
+      font-size: 0.9rem; font-weight: 500;
+      transition: transform 0.3s; z-index: 999;
+      pointer-events: none;
+    }
+    #toast.show { transform: translateX(-50%) translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 680px) {
+      nav { padding: 1rem; }
+      .nav-links { display: none; }
+      .why-inner { grid-template-columns: 1fr; }
+      .why-visual { height: 200px; order: -1; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .step-connector { display: none; }
+      .form-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">Pure<span>Press</span></a>
+  <ul class="nav-links">
+    <li><a href="#products">Products</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#order">Order</a></li>
+  </ul>
+  <button class="nav-cart" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">
+    🛒 Order Now
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-eyebrow">✦ Traditionally Cold Pressed ✦</p>
+  <h1>Oil the way<br/>nature <em>intended</em></h1>
+  <p>Zero heat. Zero chemicals. Just pure cold-pressed sesame & groundnut oil — pressed fresh and delivered to your door.</p>
+  <div class="hero-cta">
+    <a href="#products" class="btn-primary">Shop Now</a>
+    <a href="#why" class="btn-secondary">Why Cold Pressed?</a>
+  </div>
+  <div class="trust-bar">
+    <div class="trust-item"><span class="trust-icon">🌿</span> 100% Natural</div>
+    <div class="trust-item"><span class="trust-icon">🏡</span> Small Batch</div>
+    <div class="trust-item"><span class="trust-icon">🚚</span> Fast Delivery</div>
+    <div class="trust-item"><span class="trust-icon">♻️</span> No Preservatives</div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="products-header">
+    <p class="section-label">Our Products</p>
+    <h2 class="section-title">Pure oils, nothing else</h2>
+  </div>
+  <div class="products-grid">
+
+    <div class="product-card">
+      <div class="product-visual sesame">
+        🫙
+        <span class="badge">Bestseller</span>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Cold Pressed Sesame Oil</div>
+        <div class="product-desc">Nutty, golden, and rich in antioxidants. Made from the finest sesame seeds using traditional stone pressing — no heat, no refining.</div>
+        <div class="product-footer">
+          <div class="price">₹ — <span>/ 500ml</span></div>
+          <button class="add-btn" onclick="addToCart('Sesame Oil 500ml')">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-visual ground">
+        🥜
+        <span class="badge">Popular</span>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Cold Pressed Groundnut Oil</div>
+        <div class="product-desc">Earthy, mild, and packed with good fats. Pressed directly from fresh groundnuts — perfect for cooking, frying, and everyday use.</div>
+        <div class="product-footer">
+          <div class="price">₹ — <span>/ 1L</span></div>
+          <button class="add-btn" onclick="addToCart('Groundnut Oil 1L')">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-visual future">
+        🌱
+        <span class="badge new">Coming Soon</span>
+      </div>
+      <div class="product-info">
+        <div class="product-name">More Coming Soon</div>
+        <div class="product-desc">We're expanding! New cold-pressed oils are in the works. Follow us or leave your email to be notified first.</div>
+        <div class="product-footer">
+          <div class="price">Stay Tuned</div>
+          <button class="add-btn" disabled>Notify Me</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="why-inner">
+    <div>
+      <p class="section-label">Why Choose Us</p>
+      <h2 class="section-title">Cold pressed is<br/>the real difference</h2>
+      <div class="why-points">
+        <div class="why-point">
+          <div class="why-icon">🌡️</div>
+          <div class="why-text">
+            <h4>No Heat Processing</h4>
+            <p>Heat destroys nutrients and flavor. Our wood-press method keeps everything intact.</p>
+          </div>
+        </div>
+        <div class="why-point">
+          <div class="why-icon">🧪</div>
+          <div class="why-text">
+            <h4>Zero Chemicals</h4>
+            <p>No hexane, no solvents, no artificial preservatives. Just pure oil from seed to bottle.</p>
+          </div>
+        </div>
+        <div class="why-point">
+          <div class="why-icon">💪</div>
+          <div class="why-text">
+            <h4>Maximum Nutrition</h4>
+            <p>Rich in vitamins, antioxidants, and healthy fats that regular refined oils destroy.</p>
+          </div>
+        </div>
+        <div class="why-point">
+          <div class="why-icon">🏠</div>
+          <div class="why-text">
+            <h4>Small Batch, Fresh</h4>
+            <p>We press in small batches so every bottle reaches you at peak freshness.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="why-visual">🫙</div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="process-header">
+    <p class="section-label">How It's Made</p>
+    <h2 class="section-title">Seed to bottle, the right way</h2>
+  </div>
+  <div class="process-steps">
+    <div class="step">
+      <div class="step-number">1</div>
+      <div class="step-title">Source Seeds</div>
+      <div class="step-desc">Premium sesame & groundnut seeds, naturally grown</div>
+      <div class="step-connector"></div>
+    </div>
+    <div class="step">
+      <div class="step-number">2</div>
+      <div class="step-title">Clean & Dry</div>
+      <div class="step-desc">Seeds are cleaned and sun-dried naturally</div>
+      <div class="step-connector"></div>
+    </div>
+    <div class="step">
+      <div class="step-number">3</div>
+      <div class="step-title">Cold Press</div>
+      <div class="step-desc">Pressed using traditional wooden ghani/press</div>
+      <div class="step-connector"></div>
+    </div>
+    <div class="step">
+      <div class="step-number">4</div>
+      <div class="step-title">Bottle & Ship</div>
+      <div class="step-desc">Filtered and packed fresh, straight to your door</div>
+    </div>
+  </div>
+</section>
+
+<!-- ORDER -->
+<section id="order">
+  <div class="order-inner">
+    <p class="section-label">Place Your Order</p>
+    <h2 class="section-title">Get your oils delivered</h2>
+    <p>Fill out the form below and we'll reach out to confirm your order and arrange delivery or pickup.</p>
+
+    <div class="order-form">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="fname">Your Name</label>
+          <input type="text" id="fname" placeholder="e.g. Ramesh Kumar" />
+        </div>
+        <div class="form-group">
+          <label for="fphone">Phone / WhatsApp</label>
+          <input type="tel" id="fphone" placeholder="+91 98765 43210" />
+        </div>
+        <div class="form-group">
+          <label for="fproduct">Product</label>
+          <select id="fproduct">
+            <option value="">-- Select Product --</option>
+            <option>Cold Pressed Sesame Oil – 500ml</option>
+            <option>Cold Pressed Sesame Oil – 1L</option>
+            <option>Cold Pressed Groundnut Oil – 500ml</option>
+            <option>Cold Pressed Groundnut Oil – 1L</option>
+            <option>Both (Sesame + Groundnut)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="fqty">Quantity</label>
+          <select id="fqty">
+            <option>1 Bottle</option>
+            <option>2 Bottles</option>
+            <option>3 Bottles</option>
+            <option>4+ Bottles</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label for="faddress">Delivery Address</label>
+          <textarea id="faddress" placeholder="Your full address for delivery..."></textarea>
+        </div>
+        <div class="form-group full">
+          <label for="fnote">Any Special Note?</label>
+          <input type="text" id="fnote" placeholder="e.g. Prefer morning delivery, want invoice, etc." />
+        </div>
+      </div>
+      <button class="form-submit" onclick="submitOrder()">📦 Submit My Order</button>
+    </div>
+
+    <div class="contact-options">
+      <div class="contact-card">
+        <div class="contact-card-icon">💬</div>
+        <h4>WhatsApp Us</h4>
+        <p>Chat directly for quick orders<br/><a href="https://wa.me/YOUR_NUMBER" target="_blank">Open WhatsApp →</a></p>
+      </div>
+      <div class="contact-card">
+        <div class="contact-card-icon">📞</div>
+        <h4>Call Us</h4>
+        <p>Mon–Sat, 9am – 7pm<br/><a href="tel:+91XXXXXXXXXX">+91 XXXXX XXXXX</a></p>
+      </div>
+      <div class="contact-card">
+        <div class="contact-card-icon">📍</div>
+        <h4>Pick Up</h4>
+        <p>Free pickup available<br/><span style="color:var(--muted)">Your Location Here</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="logo">Pure<span style="color:var(--amber-lt)">Press</span></a>
+  <p>Cold Pressed. Naturally Pure. Made with ❤️ from a small family business.</p>
+  <p style="margin-top:0.5rem; font-size:0.75rem; opacity:0.5;">© 2025 PurePress Oils. All rights reserved.</p>
+</footer>
+
+<div id="toast">✅ Added to cart! Fill the order form below.</div>
+
+<script>
+  // Simple cart interaction
+  function addToCart(item) {
+    const select = document.getElementById('fproduct');
+    if (item.includes('Sesame')) {
+      select.value = 'Cold Pressed Sesame Oil – 500ml';
+    } else if (item.includes('Ground')) {
+      select.value = 'Cold Pressed Groundnut Oil – 1L';
+    }
+    showToast('✅ Added! Fill the order form below.');
+    setTimeout(() => {
+      document.getElementById('order').scrollIntoView({ behavior: 'smooth' });
+    }, 800);
+  }
+
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+  }
+
+  function submitOrder() {
+    const name = document.getElementById('fname').value.trim();
+    const phone = document.getElementById('fphone').value.trim();
+    const product = document.getElementById('fproduct').value;
+    const qty = document.getElementById('fqty').value;
+    const address = document.getElementById('faddress').value.trim();
+
+    if (!name || !phone || !product || !address) {
+      showToast('⚠️ Please fill in all required fields.');
+      return;
+    }
+
+    // Build WhatsApp message
+    const msg = `Hello! I'd like to order:\n\n*Name:* ${name}\n*Phone:* ${phone}\n*Product:* ${product}\n*Quantity:* ${qty}\n*Address:* ${address}`;
+    const encoded = encodeURIComponent(msg);
+    window.open(`https://wa.me/YOUR_NUMBER?text=${encoded}`, '_blank');
+    showToast('✅ Redirecting to WhatsApp to confirm!');
+  }
+</script>
+</body>
+</html>
